@@ -9,8 +9,8 @@ where postalCode = 1010;
 
 -- select supplierId, (11)
 -- from supplier
-select phoneNumber
-from supplier
+select phone
+from suppliers
 where supplierId = 11;
 
 
@@ -24,18 +24,16 @@ limit 10;
 -- Find all customers that live in London, Madrid, or Brazil
 select * 
 from customers
-where city = London || Madrid || Brazil
+where city in ("London", "Madrid") or country = "Brazil"
 
 -- Add a customer record for "The Shire", the contact name is "Bilbo Baggins" the address is -"1 Hobbit-Hole" in "Bag End", postal code "111" and the country is "Middle Earth"
-
-insert into customer (customerName, customerAddress, customerTown, customerPostalCode, customerCountry, customerHomeLand, Description)
-values ('Bilbo Baggins', '1 Hobbit-Hole', 'Bag End', '111', 'Middle Earth', 'The Shire', 'sneaky little hobbitses');
-
+insert into customers (customerName, contactName, [address], city, PostalCode, Country)
+values ('The Shire', 'Bilbo Baggins', '1 Hobbit-Hole', 'Bag End', '111', 'Middle Earth');
 -- Update Bilbo Baggins record so that the postal code changes to "11122"
 
-update customer
-set customerName = 'Bilbo Baggins', description = 'sneaky little hobbitses'
-where customerPostalCode = 11122;
+update customers
+set PostalCode = 11122
+where contactname = 'Bilbo Baggins'
 
 
 -- (Stretch) Find a query to discover how many different cities are stored in the Customers table. Repeats should not be double counted

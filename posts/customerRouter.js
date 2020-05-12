@@ -1,13 +1,13 @@
 const express = require("express");
 
-const db = require("../data/db-config.js");
+const db = require("../data/dbConfig");
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    db.select("accounts")
+    db.select("*")
       .from("accounts")
-      .then(accounts => {
+      .then((accounts) => {
         res.status(200).json({ data: accounts });
       })
       .catch(error => {
@@ -15,6 +15,7 @@ router.get("/", (req, res) => {
         res.status(500).json({ message: error.messsage });
       });
   });
+
 
   router.get("/:id", (req, res) => {
     db("accounts")
@@ -97,3 +98,6 @@ router.get("/", (req, res) => {
   function isValidPost(post) {
     return Boolean(post.name && post.budget);
   }
+
+
+module.exports = router;
