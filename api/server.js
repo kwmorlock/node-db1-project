@@ -8,7 +8,7 @@ server.use(express.json());
 
 //changed
 
-server.use("/api/data", db);
+server.use("/api/accounts", db);
 
 server.get("/", (req, res) => {
   res.status(200).json({ api: "up" });
