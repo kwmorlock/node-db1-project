@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
         if (post) {
           res.status(200).json({ data: post });
         } else {
-          res.status(404).json({ message: "No posts by that ID" });
+          res.status(404).json({ message: "No accounts by that ID" });
         }
       })
       .catch(error => {
@@ -33,3 +33,31 @@ router.get("/", (req, res) => {
       });
   });
   
+  router.post("/", (req, res) => {
+    const account = req.body;
+  
+    if (isValidPost(account)) {
+      db("accounts")
+        .insert(account, "id")
+        .then(ids => {
+          res.status(201).json({ data: ids });
+        })
+        .catch(error => {
+          console.log(error);
+          res.status(500).json({ message: error.messsage });
+        });
+    } else {
+      res
+        .status(400)
+        .json({ message: "please provide info for the account" });
+    }
+  });
+
+  
+
+
+
+
+  function isValidPost(post) {
+    return Boolean(post.name && post.budget);
+  }
