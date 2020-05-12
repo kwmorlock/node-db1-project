@@ -14,7 +14,6 @@ from supplier
 where supplierId = 11;
 
 
-
 -- List first 10 orders placed, sorted descending by the order date
 
 select * 
