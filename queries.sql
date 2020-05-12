@@ -29,6 +29,9 @@ where city = London || Madrid || Brazil
 
 -- Add a customer record for "The Shire", the contact name is "Bilbo Baggins" the address is -"1 Hobbit-Hole" in "Bag End", postal code "111" and the country is "Middle Earth"
 
+insert into customer (customerCountry, customerName, customerAddress, customerTown, customerPostalCode, customerCountry, Description)
+values ('Bilbo Baggins', '1 Hobbit-Hole', 'Bag End', '111', 'Middle Earth', 'The Shire');
+
 -- Update Bilbo Baggins record so that the postal code changes to "11122"
 
 -- (Stretch) Find a query to discover how many different cities are stored in the Customers table. Repeats should not be double counted
